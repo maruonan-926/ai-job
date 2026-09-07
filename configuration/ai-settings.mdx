@@ -1,5 +1,5 @@
 ---
-title: "Configure Your AI Model in Autumn Job Workbench"
+title: "Configure Your AI Provider in Autumn Job Workbench"
 sidebarTitle: "AI Settings"
 description: "Connect an AI provider API key to unlock resume scoring, JD matching, and interview prep — or keep using the app in local mode without one."
 ---
@@ -77,6 +77,19 @@ Autumn Job Workbench works with any **OpenAI-compatible API endpoint**, which gi
       </Step>
       <Step title="Choose a context-length model">
         Moonshot offers 8 K, 32 K, and 128 K context variants. For long resumes or detailed JD analysis, choose `moonshot-v1-32k` or `moonshot-v1-128k`. Enter `https://api.moonshot.cn/v1` as the base URL.
+      </Step>
+    </Steps>
+  </Tab>
+  <Tab title="Custom (OpenAI-compatible)">
+    <Steps>
+      <Step title="Identify your provider's API base URL">
+        Any service that exposes an OpenAI-compatible chat completions endpoint works with Autumn Job Workbench. Locate the base URL in your provider's documentation — it typically ends in `/v1` (for example, `https://my-llm-host.example.com/v1`).
+      </Step>
+      <Step title="Obtain your API key">
+        Follow your provider's instructions to generate an API key or access token. The exact steps vary by provider, but the result is always a string you paste into the workbench's **API Key** field.
+      </Step>
+      <Step title="Note the model name">
+        Find the exact model identifier string from your provider's documentation (for example, `llama-3-70b-instruct` or `mistral-large-latest`). You will need to enter this manually in the **Model** field in the workbench, as custom providers do not populate the model list automatically.
       </Step>
     </Steps>
   </Tab>
