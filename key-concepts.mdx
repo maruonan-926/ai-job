@@ -1,0 +1,149 @@
+---
+title: "Key Concepts in Autumn Job Workbench"
+sidebarTitle: "Key Concepts"
+description: "Understand the core terminology and mental model of Autumn Job Workbench — from application records and resume versions to JD matching and the status pipeline."
+---
+
+Autumn Job Workbench organizes your job search around a small set of well-defined concepts. This page explains each one clearly so you understand how the different parts of the tool fit together and what to expect as you use them. You'll find these terms throughout the interface, the documentation, and any AI-generated output inside the workbench.
+
+## Core Concepts
+
+<Tabs>
+  <Tab title="Application">
+    ### Application
+
+    An **Application** is a record representing your pursuit of one specific role at one specific company. It is the central unit of organization in Autumn Job Workbench — almost everything else (resume versions, JD matches, interview prep notes) can be linked to an application record.
+
+    Each application record holds:
+
+    - **Company** and **Role** — who you're applying to and for what position
+    - **Status** — where the application sits in the pipeline (see *Status Pipeline* below)
+    - **Resume Version** — which version of your resume is associated with this application
+    - **Job Description** — the original posting text, stored for reference and AI analysis
+    - **Notes** — freeform context such as referrals, recruiter names, deadlines, or impressions
+
+    <Info>
+      You can have multiple application records for the same company — for example, if you applied to two different roles or re-applied in a later recruiting cycle.
+    </Info>
+  </Tab>
+
+  <Tab title="Resume Version">
+    ### Resume Version
+
+    A **Resume Version** is a single, saved copy of your resume stored inside Autumn Job Workbench. Versions are independent of each other — editing or deleting one version has no effect on any other.
+
+    Resume versions let you:
+
+    - Maintain a **general-purpose version** alongside **role-tailored versions** (for example, one resume for product roles and another for program management roles)
+    - Track **which version you sent to which company** by linking a version to an application record
+    - **Iterate freely** without fear of overwriting the copy you already submitted
+
+    Resume versions can be created by uploading a PDF, Word, or Markdown file, or by pasting text directly into the editor.
+
+    <Tip>
+      Use a consistent naming convention such as `[Target Role] – v[number]` (for example, `Frontend Engineer – v3`) so you can identify versions at a glance in the Application Tracker dropdown.
+    </Tip>
+  </Tab>
+
+  <Tab title="JD Match">
+    ### JD Match
+
+    A **JD Match** is an AI-powered analysis that compares one of your resume versions against a specific job description. It answers the question: *how well does this resume position me for this role, and what should I change?*
+
+    A JD match report includes:
+
+    - **Match Score** — a percentage that reflects overall keyword and skill alignment
+    - **Keyword Gaps** — terms and requirements present in the job description but absent from your resume
+    - **Strength Areas** — sections of your resume that align strongly with the role's requirements
+    - **Suggested Edits** — concrete, line-level changes you can make to improve your score
+
+    JD matches require a configured AI provider. You can run a match from the **JD Matching** module or directly from an application record's detail view.
+
+    <Note>
+      Match scores are a heuristic guide, not a guarantee of recruiter response. Use them to prioritize edits, not as a pass/fail filter. A score above 70% generally indicates strong keyword alignment.
+    </Note>
+  </Tab>
+
+  <Tab title="Status Pipeline">
+    ### Status Pipeline
+
+    The **Status Pipeline** is the ordered set of stages that an application moves through during a typical recruiting process. In Autumn Job Workbench, every application record has exactly one active status at any time.
+
+    | Stage | Meaning |
+    |---|---|
+    | **Pending** | You've identified the role but haven't submitted an application yet |
+    | **Applied** | You've submitted your application and are awaiting a response |
+    | **Written Test** | You've been asked to complete a take-home assessment or coding challenge |
+    | **Interview** | You're actively in the interview process (phone screen, technical, or final round) |
+    | **Offer** | You've received a formal offer and are evaluating it |
+    | **Closed** | The process has ended — either you withdrew, were rejected, or accepted another offer |
+
+    You advance an application's status manually by editing the record. The Application Tracker board and table views both reflect current status, so you can see your entire pipeline at a glance.
+
+    <Info>
+      You can filter and sort the Application Tracker by status to focus on the stage that needs your attention most — for example, filtering to **Interview** to see all active interview loops.
+    </Info>
+  </Tab>
+
+  <Tab title="AI Assistant">
+    ### AI Assistant
+
+    The **AI Assistant** is a floating chat interface available in every module of Autumn Job Workbench. It provides contextual help and generative support without requiring you to leave your current view.
+
+    Depending on where you open it, the AI Assistant is aware of your current context:
+
+    - In the **Application Tracker**, it can summarize your pipeline or suggest follow-up actions
+    - In **Resume Management**, it can suggest edits to the resume version you're currently viewing
+    - In **JD Matching**, it can explain match results or brainstorm ways to address keyword gaps
+    - In **Interview Prep**, it can generate role-specific practice questions based on the job description
+
+    The AI Assistant uses the same AI provider you configure in [AI Settings](/configuration/ai-settings). It does not have access to the internet and only knows what you share with it during the session.
+
+    <Warning>
+      Avoid pasting sensitive personal information (such as your home address or phone number) into the AI Assistant chat. While your data stays local, the text you send to the AI is transmitted to your configured third-party API provider.
+    </Warning>
+  </Tab>
+
+  <Tab title="Offer Score">
+    ### Offer Score
+
+    The **Offer Score** is a multi-dimensional evaluation of a job offer that helps you assess it beyond just the base salary number. When you move an application to **Offer** status, you can trigger an Offer Score analysis.
+
+    The score evaluates the offer across several dimensions:
+
+    - **Compensation** — total compensation relative to market benchmarks for the role and location
+    - **Growth Potential** — indicators of upward mobility based on the company stage, team size, and role scope
+    - **Role Fit** — how closely the day-to-day responsibilities match your stated preferences and experience
+    - **Work-Life Balance** — signals from the job description and company context about expected hours and flexibility
+    - **Stability** — factors such as company funding stage, industry, and tenure expectations
+
+    Each dimension receives a sub-score, and a weighted overall Offer Score is calculated. You can adjust dimension weights in Settings to reflect your personal priorities.
+
+    <Tip>
+      Use the Offer Score alongside the JD Match to compare competing offers holistically — a higher-paying offer with a low Role Fit score may be a worse long-term choice than a slightly lower offer that aligns better with your goals.
+    </Tip>
+  </Tab>
+</Tabs>
+
+## How the Concepts Connect
+
+To see how everything works together: you create an **Application** record for a role, attach a **Resume Version** to it, run a **JD Match** to evaluate your fit and improve your resume, advance the record through the **Status Pipeline** as you progress, use the **AI Assistant** along the way for contextual help, and finally generate an **Offer Score** when you reach the offer stage.
+
+Every concept feeds into the next — the workbench is designed so the output of one step becomes the input for the one that follows.
+
+<CardGroup cols={2}>
+  <Card
+    title="Quickstart"
+    icon="rocket"
+    href="/quickstart"
+  >
+    Ready to put these concepts into practice? The Quickstart guide walks you through your first application record and JD match in five minutes.
+  </Card>
+  <Card
+    title="Application Tracker"
+    icon="table-list"
+    href="/features/application-tracker"
+  >
+    Dive deeper into the Application Tracker — learn how to manage your pipeline, filter by status, and keep every record up to date.
+  </Card>
+</CardGroup>

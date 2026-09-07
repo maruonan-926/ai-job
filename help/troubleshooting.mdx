@@ -1,0 +1,138 @@
+---
+title: "Troubleshoot Common Issues in Autumn Job Workbench"
+sidebarTitle: "Troubleshooting"
+description: "Diagnose and fix the most common problems in Autumn Job Workbench, from AI errors and upload failures to slow performance and missing data."
+---
+
+Most issues with Autumn Job Workbench fall into a small number of categories. Work through the relevant section below and your problem should be resolved in a few minutes. If none of the steps here help, contact support at the bottom of this page.
+
+<AccordionGroup>
+  <Accordion title="AI features are not working or returning errors">
+    If AI-powered features produce errors, show a spinner that never resolves, or return an "API error" message, work through these checks in order:
+
+    **1. Verify your API key is entered correctly**
+
+    Go to **Settings → AI Settings**. Confirm that an API key is saved in the **API Key** field. Click **Test Connection** — if it fails, your key may be incorrect, revoked, or from the wrong provider. Return to your provider's developer dashboard to generate a fresh key and paste it in.
+
+    **2. Confirm you have selected the right model**
+
+    Make sure the model name in the **Model** field is one your account has access to. Some providers restrict certain models to paid tiers.
+
+    **3. Check your internet connection**
+
+    AI requests require an outbound HTTPS connection to your provider's API endpoint. Verify that other HTTPS sites load normally. If you are on a restricted network (corporate VPN, certain school networks), the outbound connection may be blocked.
+
+    **4. Check the provider's status page**
+
+    Temporary outages on the provider's side will cause all requests to fail. Check the status page for your provider:
+    - DeepSeek: [status.deepseek.com](https://status.deepseek.com)
+    - Zhipu GLM: [open.bigmodel.cn](https://open.bigmodel.cn)
+    - Moonshot: [platform.moonshot.cn](https://platform.moonshot.cn)
+
+    **5. Check your API quota or billing**
+
+    If your free-tier credits are exhausted or your billing method has lapsed, requests will be rejected with a `402` or `429` error. Log in to your provider's dashboard and check your usage and billing status.
+  </Accordion>
+
+  <Accordion title="Resume upload fails">
+    If the workbench displays an error when you try to upload a resume file, try the following:
+
+    **Check the file format.** The workbench accepts PDF (`.pdf`), Word (`.docx`), Markdown (`.md`), and plain text (`.txt`) files. Other formats — such as `.pages`, `.odt`, or image files — are not supported. Convert your file to one of the accepted formats and try again.
+
+    **Check the file size.** Files larger than 10 MB may be rejected. If your PDF contains embedded fonts or high-resolution images, consider re-exporting it with compression enabled.
+
+    **Try pasting the text directly.** If the upload continues to fail, select all the text in your resume document, copy it, and use the **Paste Resume Text** option in the Resume Editor. This bypasses file parsing entirely and is the most reliable input method.
+
+    **Reload the page.** Occasionally a stale session causes the upload handler to stop responding. Refresh the workbench tab and try the upload again.
+  </Accordion>
+
+  <Accordion title="JD match score seems too low or too high">
+    The JD match score is an estimate, not an authoritative measurement. Keep the following caveats in mind:
+
+    **Scores can fluctuate between AI runs.** AI-based semantic analysis is non-deterministic — re-running the same resume against the same JD may produce a slightly different score. This is normal. Use the score as a directional signal, not an exact figure.
+
+    **The score reflects keyword and semantic overlap, not your overall candidacy.** A low score does not mean you are unqualified — it means the language in your resume does not closely mirror the language in the job description. Edit your resume to incorporate relevant terminology from the JD and re-run the analysis.
+
+    **After optimizing your resume, always re-run the analysis.** Click **Re-analyze** on the JD Match panel after making edits to get an updated score based on your revised content.
+
+    **Highly specialized or unusual JDs may score unexpectedly.** If a job description uses niche jargon or unconventional phrasing, the scoring algorithm may not find strong overlaps even for a well-matched candidate. Read the qualitative feedback alongside the numeric score.
+  </Accordion>
+
+  <Accordion title="Application tracker is not saving changes">
+    If edits to your applications (status changes, notes, dates) do not persist after you make them, try these steps:
+
+    **Refresh and check again.** Click away from the record you edited and click back on it — sometimes the UI needs a moment to write to the local database. If the change is still missing after a fresh page load, continue below.
+
+    **Check your browser's storage quota.** On the hosted browser version, data is stored in IndexedDB, which is subject to per-origin browser storage limits. If your browser has reached its quota, writes will silently fail. Clear cached data from other sites or, on Chrome, go to **chrome://settings/content/all** and check the storage used by the workbench origin.
+
+    **Try a hard refresh.** Press `Ctrl + Shift + R` (Windows/Linux) or `Cmd + Shift + R` (macOS) to force a full reload and clear any stale JavaScript cache.
+
+    **Try a different browser.** If the problem persists, open the workbench in a different browser to rule out a browser-specific storage issue. Chrome and Edge are recommended for best compatibility.
+  </Accordion>
+
+  <Accordion title="The app is slow or unresponsive">
+    Sluggish performance is usually caused by resource contention in the browser. Try the following:
+
+    **Close unused browser tabs.** The workbench is JavaScript-heavy; running it alongside many other active tabs can cause memory pressure. Close tabs you are not using and reload the workbench.
+
+    **Switch to Chrome or Edge.** These browsers have the most optimized JavaScript engines and are the recommended runtime for the workbench. Firefox and Safari work, but may be noticeably slower for data-intensive views like the full application list.
+
+    **Reduce the number of items in view.** If you have a large number of applications, use the status filter to display only a subset (for example, only **Active** applications). Rendering large lists in the tracker can be slow on older devices.
+
+    **Clear your browser cache.** Stale cached assets from an older version of the workbench can sometimes cause slowdowns. Go to your browser's settings and clear cached images and files for the workbench origin, then reload.
+
+    **Restart the browser.** If the workbench has been open for an extended period, a full browser restart frees up accumulated memory.
+  </Accordion>
+
+  <Accordion title="I lost my data after clearing my browser">
+    On the hosted browser version, all workbench data is stored in your browser's IndexedDB storage. **Clearing your browser's cookies, cache, or site data will permanently erase your workbench database** — this is a consequence of browser-based local storage, not a bug.
+
+    To avoid losing data in the future, export a backup regularly:
+
+    1. Go to **Settings → Data → Export Database**.
+    2. Save the `.ajw-backup` file to a location outside your browser — such as a folder in cloud storage or an external drive.
+
+    To restore data from an existing backup:
+
+    1. Go to **Settings → Data → Import Database**.
+    2. Select your `.ajw-backup` file and click **Restore**.
+
+    If you do not have a backup and your data was erased, unfortunately it cannot be recovered. See the [Data & Privacy](/configuration/data-privacy) page for advice on setting up a regular backup routine going forward.
+  </Accordion>
+
+  <Accordion title="Mock interview audio is not working">
+    If the microphone does not activate or you see a "microphone permission denied" error during a mock interview session:
+
+    **Check your browser's microphone permission.**
+
+    1. In Chrome or Edge, click the lock icon in the address bar.
+    2. Look for **Microphone** in the permissions list.
+    3. If it is set to **Block**, change it to **Allow** and reload the page.
+    4. On macOS, also check **System Preferences → Security & Privacy → Privacy → Microphone** and ensure your browser is listed and checked.
+    5. On Windows, check **Settings → Privacy → Microphone** and confirm that browser access is enabled.
+
+    **Use text input as a fallback.** Every mock interview question in the workbench has a **Type your answer** fallback option below the microphone button. Click it to switch to text input — your response is evaluated identically whether you speak or type.
+
+    **Try a different browser.** Browser-level audio handling varies. If Chrome is not working, try Edge. Safari has known limitations with certain WebAudio APIs; Chrome or Edge are recommended for audio features.
+
+    **Check for conflicting applications.** Other applications that hold an exclusive lock on the microphone (such as video conferencing software) may prevent the browser from accessing it. Close those applications and try again.
+  </Accordion>
+
+  <Accordion title="I can't find an application I created">
+    If an application you added does not appear in the Application Tracker, try the following:
+
+    **Check your active filters.** The tracker toolbar includes status, date range, and job track filters. If a filter is active, applications that do not match it are hidden. Click **Clear Filters** or **Reset** in the toolbar to show all records.
+
+    **Check the Closed status.** Applications you moved to **Closed** (rejected, withdrawn, or no longer active) are grouped in a separate **Closed** tab or filtered out by default. Click the **Closed** tab or add "Closed" to your status filter to see them.
+
+    **Search by company or role title.** Use the search bar at the top of the tracker to search for the company name or role title. The search is case-insensitive.
+
+    **Check that the record was saved.** If you created the application and then navigated away before saving, the record may not have been written to the database. Check whether the application is listed at all, and if not, re-create it.
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Still Need Help?
+
+If none of the steps above resolve your issue, the support team is happy to assist. Send a description of the problem — including your browser, operating system, and any error messages you see — to [support@autumnjobworkbench.com](mailto:support@autumnjobworkbench.com) and a team member will follow up with you.

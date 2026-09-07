@@ -1,0 +1,105 @@
+---
+title: "Frequently Asked Questions About Autumn Job Workbench"
+sidebarTitle: "FAQ"
+description: "Quick answers to the most common questions about Autumn Job Workbench features, AI integration, data storage, pricing, and multi-device use."
+---
+
+Below you will find answers to the questions users ask most often. If your question is not covered here, check the [Troubleshooting](/help/troubleshooting) page or reach out to support.
+
+<AccordionGroup>
+  <Accordion title="Is Autumn Job Workbench free to use?">
+    Yes — Autumn Job Workbench itself is free. You can use every core feature, including the application tracker, resume templates, keyword analysis, and structured diagnostics, at no cost.
+
+    The only potential cost comes from AI features: if you connect a third-party AI provider (DeepSeek, Zhipu GLM, Moonshot, or a custom endpoint), that provider may charge you based on your API usage. Each provider has its own pricing and free-tier limits — check their respective developer platforms for current rates. Autumn Job Workbench does not charge you for API calls or add any markup.
+  </Accordion>
+
+  <Accordion title="Do I need an account to use it?">
+    No. Autumn Job Workbench requires no sign-up, no email address, and no account of any kind. Open the app in your browser and it is ready to use immediately. All your settings and data are stored locally on your device.
+  </Accordion>
+
+  <Accordion title="Is my data safe? Where is it stored?">
+    Your data is stored in a local database on your own device — not on any Autumn Job Workbench server. This means your resumes, application records, notes, and interview logs never leave your machine unless you explicitly send content to an AI provider for analysis.
+
+    When you use AI features, only the specific text you submit for that request is transmitted directly to your chosen AI provider's API over an encrypted connection. Autumn Job Workbench servers are never involved in that exchange.
+
+    For full details, see the [Data & Privacy](/configuration/data-privacy) page.
+  </Accordion>
+
+  <Accordion title="Which AI providers are supported?">
+    Autumn Job Workbench supports any **OpenAI-compatible API endpoint**. Built-in presets are available for:
+
+    - **DeepSeek** — strong general reasoning and code-related roles
+    - **Zhipu GLM** — excellent for Chinese-language resumes and job descriptions
+    - **Moonshot / Kimi** — ideal for long-context document analysis
+
+    You can also configure a fully custom base URL to connect to a self-hosted model or any other compatible provider.
+
+    See [AI Settings](/configuration/ai-settings) for setup instructions.
+  </Accordion>
+
+  <Accordion title="Do I need an AI API key to use the app?">
+    No. The workbench runs in **local mode** without any API key and still provides substantial functionality:
+
+    - Deterministic keyword gap detection between your resume and a job description
+    - Checklist-based structured diagnostics for your application materials
+    - Full application pipeline tracking
+    - Curated next-step suggestions based on your current stage
+    - Resume and cover letter templates
+
+    An API key is only required for AI-powered capabilities such as deep resume rewrites, open-ended JD analysis, and conversational mock interview sessions.
+  </Accordion>
+
+  <Accordion title="Can I use the app offline?">
+    Yes, for most features. The application tracker, resume editor, templates, and structured diagnostics all work without an internet connection because everything runs locally in your browser.
+
+    AI features require an active internet connection to reach your chosen provider's API. If you are offline, those features will display a connection error and the rest of the app will continue to function normally.
+  </Accordion>
+
+  <Accordion title="How do I switch my AI provider?">
+    Open **Settings → AI Settings**, choose a different provider from the **Provider** dropdown, enter your API key for that provider, and click **Save**. Click **Test Connection** to confirm it works before using AI features.
+
+    Switching providers does not delete your existing data or your previous provider's key — both keys remain stored in their respective fields until you explicitly clear them.
+
+    See [AI Settings](/configuration/ai-settings) for a step-by-step walkthrough.
+  </Accordion>
+
+  <Accordion title="Can I export my application data?">
+    Yes. Go to **Settings → Data → Export** to download your application data in CSV format (suitable for spreadsheets) or as an `.ajw-backup` file (suitable for restoring the full workbench state on another device).
+
+    You can also export individual resumes as PDF or plain text from the Resume Editor.
+  </Accordion>
+
+  <Accordion title="What file formats does the resume upload support?">
+    The workbench accepts the following formats when you upload an existing resume:
+
+    - **PDF** (`.pdf`) — the most reliable format for preserving layout
+    - **Microsoft Word** (`.docx`) — supported with formatting preserved where possible
+    - **Markdown** (`.md`) — ideal if you maintain your resume as a plain text file
+    - **Plain text** (`.txt`) — always accepted as a fallback
+
+    If your file fails to upload, try copying the text directly and pasting it into the **Paste Resume Text** field instead.
+  </Accordion>
+
+  <Accordion title="How is the JD match score calculated?">
+    In local mode, the JD match score is calculated deterministically by comparing the keywords and phrases in your resume against those found in the job description, weighted by section (skills, experience, and education each carry different weights).
+
+    When an AI provider is connected, the score is supplemented with a semantic analysis that accounts for synonyms, implied skills, and contextual relevance — producing a richer breakdown alongside the numeric score.
+
+    The score is an estimate to help you prioritize edits, not a guarantee of recruiter or ATS behavior. Use it as a guide rather than a definitive pass/fail judgment.
+  </Accordion>
+
+  <Accordion title="Can I use the app on multiple devices?">
+    You can install and use the workbench on as many devices as you like, but data does not sync automatically between them. Each device maintains its own independent local database.
+
+    To move your data between devices, export a backup on the source device and import it on the destination device. See [Data & Privacy](/configuration/data-privacy) for detailed migration steps.
+  </Accordion>
+
+  <Accordion title="How do I delete all my data?">
+    To permanently erase all your workbench data:
+
+    - **Desktop version:** Close the workbench and delete the `ajw.db` file from its default location (see the [Data & Privacy](/configuration/data-privacy) page for the exact path on your operating system).
+    - **Hosted browser version:** Go to **Settings → Data → Delete All Data** and confirm the action. You can also use your browser's built-in **Clear Site Data** option for the workbench origin.
+
+    Deletion is permanent. Make sure you have exported a backup first if you think you might want your records later.
+  </Accordion>
+</AccordionGroup>

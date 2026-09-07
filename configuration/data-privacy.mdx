@@ -1,0 +1,101 @@
+---
+title: "How Autumn Job Workbench Handles Your Data"
+sidebarTitle: "Data & Privacy"
+description: "Learn where your data lives, what gets sent to AI providers, how to back up your local database, and how to permanently delete all your information."
+---
+
+Autumn Job Workbench is built around a local-first principle: your job search data stays on your device by default, and you remain in full control of what leaves it. This page explains exactly where your data is stored, what gets transmitted when you use AI features, and how to protect, migrate, or delete your information.
+
+## Where Your Data Is Stored
+
+Every piece of information you create in the workbench — resumes, job applications, interview records, notes, cover letters, and settings — is saved in a local database on your own device. No data is synchronized to Autumn Job Workbench servers, and there is no cloud backup unless you set one up yourself.
+
+The local database file is located at:
+
+| Platform | Default path |
+|---|---|
+| **macOS** | `~/Library/Application Support/AutumnJobWorkbench/ajw.db` |
+| **Windows** | `%APPDATA%\AutumnJobWorkbench\ajw.db` |
+| **Linux** | `~/.config/AutumnJobWorkbench/ajw.db` |
+| **Browser (hosted)** | Browser IndexedDB storage (origin-bound) |
+
+<Note>
+  If you are using the hosted browser version, your data lives in the browser's IndexedDB storage and is tied to the specific browser profile and origin. Clearing your browser's site data will erase the database — see the backup section below to protect against this.
+</Note>
+
+## What Is Sent to AI Providers
+
+When you trigger an AI feature (such as resume scoring, JD match analysis, or a mock interview), the workbench sends only the specific content you submit for that request directly to your chosen AI provider's API. This means:
+
+- **Resume analysis** — the resume text you select or upload is sent to the provider.
+- **JD match scoring** — the job description text and the resume text you compare are sent to the provider.
+- **Mock interview** — your text or audio responses (transcribed locally where possible) are sent to the provider.
+- **Cover letter drafting** — the context you provide (role title, company, key points) is sent to the provider.
+
+**Nothing passes through Autumn Job Workbench servers.** The request goes directly from your browser or device to the AI provider's API endpoint over an encrypted HTTPS connection.
+
+<Warning>
+  The privacy policy of your chosen AI provider governs how they handle any content you send for analysis. Before submitting sensitive personal information — such as your home address, national ID numbers, or confidential employer details — review the provider's data retention and privacy policy. Links to each provider's policies are available on their developer platforms.
+</Warning>
+
+## How API Keys Are Stored
+
+Your API key is stored locally on your device using the browser's encrypted storage or, where available, the operating system's credential store (Keychain on macOS, Credential Manager on Windows). The key is:
+
+- **Never transmitted** to Autumn Job Workbench servers
+- **Never included** in telemetry, error reports, or analytics
+- **Encrypted at rest** on devices that support OS-level credential storage
+
+You can clear your stored API key at any time from **Settings → AI Settings → Clear Key**. See the [AI Settings](/configuration/ai-settings) page for full instructions.
+
+## Back Up Your Data
+
+Backing up your workbench data is as simple as copying the local database file to a safe location.
+
+<Steps>
+  <Step title="Locate the database file">
+    Find the `ajw.db` file at the path listed in the table above for your platform. On the hosted browser version, use the built-in export tool instead (see the note below).
+  </Step>
+  <Step title="Close or pause the workbench">
+    While not strictly required, closing the workbench tab or pausing activity ensures the database file is not mid-write when you copy it, which prevents a corrupt backup.
+  </Step>
+  <Step title="Copy the file">
+    Copy `ajw.db` to an external drive, a cloud storage folder (such as iCloud Drive, Google Drive, or Dropbox), or any other backup location you trust.
+  </Step>
+  <Step title="Schedule regular backups">
+    Because the workbench does not back up automatically, set a personal reminder to copy the file after major updates — for example, after a batch of new applications or after a round of interviews.
+  </Step>
+</Steps>
+
+<Tip>
+  On the hosted browser version, go to **Settings → Data → Export Database** to download a portable `.ajw-backup` file. This file uses the same format as `ajw.db` and can be restored on any device running the workbench.
+</Tip>
+
+## Migrate to a New Device
+
+<Steps>
+  <Step title="Create a backup on your old device">
+    Follow the backup steps above to copy `ajw.db` (or download the `.ajw-backup` file from the hosted version).
+  </Step>
+  <Step title="Install or open the workbench on the new device">
+    Set up Autumn Job Workbench on your new device. Complete the first-launch welcome screen if prompted.
+  </Step>
+  <Step title="Restore the database">
+    - **Desktop version:** Replace the empty `ajw.db` at the default path with the backup copy you made.
+    - **Hosted browser version:** Go to **Settings → Data → Import Database**, select your `.ajw-backup` file, and click **Restore**. The workbench reloads with your data intact.
+  </Step>
+  <Step title="Verify your data">
+    Open the Application Tracker and check that your records appear. Review your profile settings and AI configuration, as the API key will need to be re-entered on the new device.
+  </Step>
+</Steps>
+
+## Delete All Your Data
+
+To permanently remove all your workbench data:
+
+- **Desktop version:** Close the workbench, then delete the `ajw.db` file from the path listed above. The next time you open the app it will start fresh with an empty database.
+- **Hosted browser version:** Go to **Settings → Data → Delete All Data**, confirm the action, and the workbench will clear its IndexedDB storage. Alternatively, use your browser's **Clear Site Data** option for the workbench origin.
+
+<Warning>
+  Deleting your data is permanent and cannot be undone unless you have a backup. Make sure to export a copy before proceeding if there is any chance you will want to recover your records.
+</Warning>

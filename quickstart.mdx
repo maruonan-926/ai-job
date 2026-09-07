@@ -1,47 +1,116 @@
 ---
-title: "Quickstart"
-description: "Begin with a guide on the fastest path to a successful outcome"
+title: "Get Started with Autumn Job Workbench in 5 Minutes"
+sidebarTitle: "Quickstart"
+description: "Follow this step-by-step guide to open Autumn Job Workbench, add a resume, log your first application, and run your first JD match in under five minutes."
 ---
 
-Describe how someone begins using your product. What is the first thing they need to do? Are there any prerequisites?
-
-A quickstart should take someone from zero to using your product. They'll get a quick win and a sense of what they can accomplish.
+Autumn Job Workbench is designed to get out of your way and let you start tracking immediately. This guide walks you through the five essential steps to go from a fresh install to a fully running job search workflow — no account, no configuration required to get started, and no data sent anywhere.
 
 ## Prerequisites
 
-Before you begin, you must have:
+Before you begin, make sure you have:
 
-- Requirement one (for example, Node.js 18+, a free account, an API key)
-- Requirement two (for example, a compatible device, a compatible browser, a compatible operating system)
+- A modern browser (Chrome, Firefox, Edge, or Safari — all current versions supported)
+- At least one resume file ready to upload (PDF, Word `.docx`, or Markdown) **or** your resume text available to paste
+- *(Optional)* An API key from an OpenAI-compatible AI provider such as [DeepSeek](https://platform.deepseek.com) or [Zhipu GLM](https://open.bigmodel.cn) if you want to use AI-powered features
 
-## Get started
+<Note>
+  AI features such as JD matching and interview question generation require an API key, but the Application Tracker and Resume Management modules work fully offline without one.
+</Note>
+
+## Setup Steps
 
 <Steps>
-  <Step title="Install">
-    Describe how to install your product or sign up.
+  <Step title="Open the Workbench in Your Browser">
+    Navigate to the Autumn Job Workbench URL provided with your installation (for example, `http://localhost:5173` if you're running it locally). The workbench loads entirely in your browser — no login screen, no onboarding survey.
 
-    ```bash
-    npm install your-package
-    ```
+    You'll land on the **Dashboard**, which gives you a summary view of your applications, recent activity, and quick-action buttons. Take a moment to orient yourself with the sidebar navigation on the left, which links to each of the core modules.
   </Step>
-  <Step title="Configure">
-    Describe any setup or configuration needed before first use.
 
-    ```bash
-    your-cli init
-    ```
+  <Step title="Add Your First Resume">
+    Navigate to **Resume Management** in the sidebar.
+
+    Click **Add Resume Version** and choose how you'd like to provide your resume:
+
+    <Tabs>
+      <Tab title="Upload a File">
+        Click **Upload File** and select a PDF, Word (`.docx`), or Markdown (`.md`) file from your device. AJW parses the file and stores it as a named resume version. Give it a clear label — for example, `Software Engineer – General v1` — so you can identify it later.
+      </Tab>
+      <Tab title="Paste Text">
+        Click **Paste Text**, then copy and paste the full content of your resume into the text editor. Apply a version label and click **Save**. This is useful if your resume lives in a Google Doc or another format that doesn't export cleanly.
+      </Tab>
+    </Tabs>
+
+    Once saved, your resume version appears in the Resume Management list. You can add as many versions as you like — AJW stores them all locally and never overwrites an existing version unless you explicitly do so.
   </Step>
-  <Step title="Run it">
-    Show the first thing a user does to see it working.
 
-    ```bash
-    your-cli start
-    ```
+  <Step title="Create Your First Application Record">
+    Navigate to **Application Tracker** in the sidebar.
+
+    Click **New Application**. Fill in the following fields:
+
+    | Field | What to Enter |
+    |---|---|
+    | **Company** | The name of the company you're applying to |
+    | **Role** | The job title as it appears in the posting |
+    | **Status** | Leave as **Pending** for a role you haven't applied to yet, or set to **Applied** if you've already submitted |
+    | **Resume Version** | Select the resume version you just added |
+    | **Notes** | Any early context — referrals, deadlines, interesting details |
+
+    Click **Save**. Your first application record now appears in the tracker table. You'll move it through the status pipeline — Pending → Applied → Written Test → Interview → Offer → Closed — as your process progresses.
+
+    <Tip>
+      You can paste the job description directly into the **Job Description** field on the application record. Storing it here makes it easy to run a JD match later without hunting for the original posting.
+    </Tip>
+  </Step>
+
+  <Step title="Configure Your AI Model">
+    Navigate to **Settings** → **AI Settings** (or go directly to [AI Settings](/configuration/ai-settings)).
+
+    AJW works with any OpenAI-compatible API endpoint. To connect your provider:
+
+    1. Enter your **API Base URL** — for example, `https://api.deepseek.com/v1` for DeepSeek
+    2. Paste your **API Key** in the key field
+    3. Enter the **Model Name** you want to use — for example, `deepseek-chat` or `glm-4`
+    4. Click **Test Connection** to verify the key is valid and the model responds
+    5. Click **Save**
+
+    <Tip>
+      DeepSeek and Zhipu GLM offer low-cost API tiers that are well-suited for resume analysis and question generation. See [AI Settings](/configuration/ai-settings) for a full list of tested providers and recommended model names.
+    </Tip>
+
+    <Warning>
+      Your API key is stored in your browser's local storage and never sent to Autumn Job Workbench servers. However, treat your API key like a password — do not share your browser profile or export your local storage to untrusted parties.
+    </Warning>
+  </Step>
+
+  <Step title="Run Your First JD Match">
+    Navigate to **JD Matching** in the sidebar, or open the application record you created in Step 3 and click **Run JD Match** from the record detail view.
+
+    1. Select the **Resume Version** you want to evaluate
+    2. Confirm the **Job Description** is populated (paste it now if you didn't add it to the application record earlier)
+    3. Click **Analyze Match**
+
+    AJW sends your resume and the job description to your configured AI model and returns a structured match report. The report highlights:
+
+    - **Match score** — an overall percentage alignment
+    - **Keyword gaps** — skills and terms in the JD that don't appear in your resume
+    - **Strength areas** — parts of your background that align strongly with the role
+    - **Suggested edits** — specific, actionable resume tweaks to improve your score
+
+    Review the suggestions and use them to refine your resume version before submitting your application.
   </Step>
 </Steps>
 
-<Tip>
-  Give people a way to get help. This could be a link to a support page, a chat with a customer support agent, or a forum for your product.
+## You're Up and Running
 
-  Example: Need help? Reach out to us at [support@yourcompany.com](mailto:support@yourcompany.com).
-</Tip>
+You've completed the core setup loop: resume added, application recorded, AI connected, and your first match analyzed. From here, explore the rest of the workbench at your own pace.
+
+<CardGroup cols={2}>
+  <Card title="Key Concepts" icon="book-open" href="/key-concepts">
+    Learn the terminology and mental model behind AJW's features before diving deeper.
+  </Card>
+  <Card title="AI Settings" icon="sliders" href="/configuration/ai-settings">
+    Fine-tune your AI provider configuration, switch models, or add multiple provider profiles.
+  </Card>
+</CardGroup>

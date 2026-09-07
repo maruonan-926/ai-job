@@ -1,0 +1,81 @@
+{
+  "projectType": "saas",
+  "projectName": "Autumn Job Workbench",
+  "projectDescription": "An all-in-one job application management workbench that helps job seekers track applications, match resumes to job descriptions, and prepare for interviews throughout the recruitment season.",
+  "theme": "almond",
+  "primaryColor": "#ef7025",
+  "lightColor": "#eec9bc",
+  "darkColor": "#4fa1ab",
+  "navigation": {
+    "tabs": [
+      {
+        "tab": "Documentation",
+        "groups": [
+          {
+            "group": "Get Started",
+            "pages": [
+              "introduction",
+              "quickstart",
+              "key-concepts"
+            ]
+          },
+          {
+            "group": "Core Features",
+            "pages": [
+              "features/application-tracker",
+              "features/resume-management",
+              "features/jd-matching",
+              "features/interview-prep"
+            ]
+          },
+          {
+            "group": "Guides",
+            "pages": [
+              "guides/manage-applications",
+              "guides/optimize-resume",
+              "guides/prepare-interview",
+              "guides/evaluate-offers"
+            ]
+          },
+          {
+            "group": "Configuration",
+            "pages": [
+              "configuration/account-setup",
+              "configuration/ai-settings",
+              "configuration/data-privacy"
+            ]
+          },
+          {
+            "group": "Help",
+            "pages": [
+              "help/faq",
+              "help/troubleshooting"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "keyFeatures": [
+    "Kanban-style application tracker with status pipeline (Applied → Written Test → Interview → Offer)",
+    "Multi-version resume management with AI-powered scoring and optimization",
+    "JD matching with radar chart analysis and skills gap identification",
+    "Interview preparation with question prediction, mock sessions, and AI feedback",
+    "Offer evaluation with multi-dimensional scoring (salary, growth, culture)",
+    "AI assistant (floating chat) available across all modules",
+    "Data dashboard with application funnel statistics and analytics",
+    "Calendar view for deadlines and interview schedules",
+    "Local-first data storage — all data stays on the user's device"
+  ],
+  "publicApiSurface": [
+    "Application status pipeline: Pending → Applied → Written Test → Interview → Offer → Closed",
+    "Resume upload (PDF / Word / Markdown / plain text)",
+    "JD paste-and-match: resume vs. job description fit scoring",
+    "AI resume optimizer: keyword alignment, STAR rewrites",
+    "Interview question generator based on JD",
+    "Mock interview session with AI feedback",
+    "Offer scorer: salary, growth potential, workload, benefits, brand",
+    "AI chat assistant with resume / JD / interview context",
+    "DeepSeek / GLM / other OpenAI-compatible API key configuration"
+  ]
+}

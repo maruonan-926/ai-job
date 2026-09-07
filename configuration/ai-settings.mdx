@@ -1,0 +1,135 @@
+---
+title: "Configure Your AI Model in Autumn Job Workbench"
+sidebarTitle: "AI Settings"
+description: "Connect an AI provider API key to unlock resume scoring, JD matching, and interview prep — or keep using the app in local mode without one."
+---
+
+Autumn Job Workbench is fully usable without an AI key, but connecting one unlocks a richer layer of assistance: deep resume rewrites, open-ended JD analysis, personalized cover letter drafting, and conversational mock interview feedback. This page explains which providers are supported, how to obtain a key, and how to manage your AI settings over time.
+
+## What You Can Do Without an API Key
+
+Running the workbench without an API key is called **local mode**. In local mode you still have access to:
+
+- **Structured job search diagnostics** — checklist-based analysis of your application materials against common hiring criteria
+- **Keyword gap detection** — deterministic matching of your resume keywords against job description keywords
+- **Application tracker** — full pipeline management (Saved → Applied → Interview → Offer → Closed)
+- **Clickable next-step suggestions** — curated action items based on your application stage
+- **Template library** — pre-built resume and cover letter templates for all supported job tracks
+
+AI-powered capabilities that require an API key include deep natural-language resume rewrites, open-ended "explain this job description" queries, and conversational mock interview sessions.
+
+## Supported AI Providers
+
+Autumn Job Workbench works with any **OpenAI-compatible API endpoint**, which gives you a wide range of choices. The three most commonly used providers are:
+
+| Provider | Best for | Models |
+|---|---|---|
+| **DeepSeek** | Strong reasoning and code-heavy roles | `deepseek-chat`, `deepseek-reasoner` |
+| **Zhipu GLM** | Chinese-language resumes and JDs | `glm-4`, `glm-4-flash` |
+| **Moonshot / Kimi** | Long-context document analysis | `moonshot-v1-8k`, `moonshot-v1-32k`, `moonshot-v1-128k` |
+| **Custom (OpenAI-compatible)** | Any self-hosted or third-party model | Configurable |
+
+## Obtain an API Key
+
+<Tabs>
+  <Tab title="DeepSeek">
+    <Steps>
+      <Step title="Create a DeepSeek account">
+        Go to [platform.deepseek.com](https://platform.deepseek.com) and sign up for a developer account. New accounts receive a free credit allowance for evaluation.
+      </Step>
+      <Step title="Navigate to API Keys">
+        After logging in, click your avatar in the top-right corner and select **API Keys** from the menu.
+      </Step>
+      <Step title="Generate a new key">
+        Click **Create new secret key**, give it a recognizable name (for example, `autumn-workbench`), and click **Create**. Copy the key immediately — DeepSeek will not display it again after you close the dialog.
+      </Step>
+      <Step title="Note your base URL">
+        The DeepSeek base URL is `https://api.deepseek.com`. You will need this when configuring the workbench.
+      </Step>
+    </Steps>
+  </Tab>
+  <Tab title="Zhipu GLM">
+    <Steps>
+      <Step title="Create a Zhipu account">
+        Go to [open.bigmodel.cn](https://open.bigmodel.cn) and register for a developer account. New users receive complimentary tokens upon verification.
+      </Step>
+      <Step title="Access the API Keys page">
+        From the dashboard, navigate to **API Management → API Keys**.
+      </Step>
+      <Step title="Generate a new key">
+        Click **Add API Key**, enter a description, and confirm. Copy the key that is displayed.
+      </Step>
+      <Step title="Note your base URL">
+        The Zhipu GLM base URL is `https://open.bigmodel.cn/api/paas/v4`. Enter this in the workbench's **Base URL** field.
+      </Step>
+    </Steps>
+  </Tab>
+  <Tab title="Moonshot / Kimi">
+    <Steps>
+      <Step title="Create a Moonshot account">
+        Go to [platform.moonshot.cn](https://platform.moonshot.cn) and sign up. The platform offers a free tier with a monthly token quota.
+      </Step>
+      <Step title="Open API Key management">
+        In the left sidebar, click **API Keys**, then click **New API Key**.
+      </Step>
+      <Step title="Copy your key">
+        Give the key a name, click **Confirm**, and copy the displayed key. Store it somewhere safe before closing the dialog.
+      </Step>
+      <Step title="Choose a context-length model">
+        Moonshot offers 8 K, 32 K, and 128 K context variants. For long resumes or detailed JD analysis, choose `moonshot-v1-32k` or `moonshot-v1-128k`. Enter `https://api.moonshot.cn/v1` as the base URL.
+      </Step>
+    </Steps>
+  </Tab>
+</Tabs>
+
+## Enter Your API Key in the Workbench
+
+<Steps>
+  <Step title="Open AI Settings">
+    Click the **Settings** icon (⚙) in the left sidebar and select **AI Settings**.
+  </Step>
+  <Step title="Choose a provider">
+    Open the **Provider** dropdown and select your provider. If your provider is not listed, choose **Custom (OpenAI-compatible)**.
+  </Step>
+  <Step title="Enter the base URL (if using Custom)">
+    For a custom provider, paste the API base URL into the **Base URL** field. For the three listed providers the URL is filled in automatically when you select them from the dropdown.
+  </Step>
+  <Step title="Paste your API key">
+    Click inside the **API Key** field and paste the key you copied from your provider's dashboard. The field is masked for security.
+  </Step>
+  <Step title="Select a model">
+    Open the **Model** dropdown and choose the model you want the workbench to use. You can type a model name manually if it does not appear in the list.
+  </Step>
+  <Step title="Test the connection">
+    Click **Test Connection**. The workbench sends a minimal request to verify the key and model are valid. A green ✓ confirmation means AI features are now active.
+  </Step>
+</Steps>
+
+<Warning>
+  Your API key is stored only on this device — it is never uploaded to Autumn Job Workbench servers or shared with any third party. However, treat your key like a password: do not paste it into shared documents, screenshots, or public repositories. If you believe a key has been exposed, revoke it immediately from your provider's dashboard and generate a new one.
+</Warning>
+
+## Switch Between Providers
+
+You can change your active provider at any time without losing your application data.
+
+1. Open **Settings → AI Settings**.
+2. Select a different provider from the **Provider** dropdown.
+3. Enter the API key and model for the new provider.
+4. Click **Test Connection**, then **Save**.
+
+The workbench uses the newly selected provider for all subsequent AI requests. Your previous provider's key is retained in the form unless you explicitly clear it.
+
+## Clear or Reset Your API Key
+
+To remove a stored API key from the workbench:
+
+1. Open **Settings → AI Settings**.
+2. Click the **Clear Key** button next to the API key field.
+3. Confirm the action in the dialog that appears.
+
+After clearing, the workbench returns to local mode. Your application data, resumes, and notes are not affected.
+
+<Tip>
+  If you want to rotate your key (replace it with a new one from the same provider), simply paste the new key into the **API Key** field and click **Save** — you do not need to clear the old key first.
+</Tip>
